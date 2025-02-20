@@ -10,10 +10,8 @@ export default function Home() {
       <h1 className="text-2xl"> Job Chaser</h1>
       <StateContext>
       <InputForm/>
-      <div className=" flex justify-center mt-10 border-white rounded-md border-2 w-[40rem] h-[35rem] p-5 overflow-y-auto "  >
-        <ol>
+      <div className=" flex justify-center mt-10 border-white rounded-md border-2 w-[40rem] h-[37rem] px-7 py-4 overflow-y-auto "  >
             <JobTile />
-        </ol>
       </div>
             </StateContext>
     </div>

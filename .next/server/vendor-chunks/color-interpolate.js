@@ -1,0 +1,25 @@
+"use strict";
+/*
+ * ATTENTION: An "eval-source-map" devtool has been used.
+ * This devtool is neither made for production nor for readable output files.
+ * It uses "eval()" calls to create a separate source file with attached SourceMaps in the browser devtools.
+ * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
+ * or disable the default devtool with "devtool: false".
+ * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
+ */
+exports.id = "vendor-chunks/color-interpolate";
+exports.ids = ["vendor-chunks/color-interpolate"];
+exports.modules = {
+
+/***/ "(ssr)/./node_modules/color-interpolate/index.js":
+/*!*************************************************!*\
+  !*** ./node_modules/color-interpolate/index.js ***!
+  \*************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("\r\n\r\n/**\r\n * @module  color-interpolate\r\n * Pick color from palette by index\r\n */\r\n\r\nconst parse = __webpack_require__(/*! color-parse */ \"(ssr)/./node_modules/color-parse/index.js\");\r\nconst hsl = __webpack_require__(/*! color-space/hsl */ \"(ssr)/./node_modules/color-space/hsl.js\");\r\nconst lerp = __webpack_require__(/*! lerp */ \"(ssr)/./node_modules/lerp/index.js\");\r\nconst clamp = __webpack_require__(/*! clamp */ \"(ssr)/./node_modules/clamp/index.js\");\r\n\r\nmodule.exports = interpolate;\r\n\r\nfunction interpolate (palette) {\r\n\tpalette = palette.map(function(c) {\r\n\t\tc = parse(c);\r\n\t\tif (c.space != 'rgb') {\r\n\t\t\tif (c.space != 'hsl') throw 'c.space' + 'space is not supported.';\r\n\t\t\tc.values = hsl.rgb(c.values);\r\n\t\t}\r\n\t\tc.values.push(c.alpha);\r\n\t\treturn c.values;\r\n\t});\r\n\r\n\treturn function(t, mix) {\r\n\t\tmix = mix || lerp;\r\n\t\tt = clamp(t, 0, 1);\r\n\r\n\t\tvar idx = ( palette.length - 1 ) * t,\r\n\t\t\tlIdx = Math.floor( idx ),\r\n\t\t\trIdx = Math.ceil( idx );\r\n\r\n\t\tt = idx - lIdx;\r\n\r\n\t\tvar lColor = palette[lIdx], rColor = palette[rIdx];\r\n\r\n\t\tvar result = lColor.map(function(v, i) {\r\n\t\t\tv = mix(v, rColor[i], t);\r\n\t\t\tif (i < 3) v = Math.round(v);\r\n\t\t\treturn v;\r\n\t\t});\r\n\r\n\t\tif (result[3] === 1) {\r\n\t\t\treturn 'rgb('+result.slice(0,3)+')';\r\n\t\t}\r\n\t\treturn 'rgba('+result+')';\r\n\t};\r\n}\r\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKHNzcikvLi9ub2RlX21vZHVsZXMvY29sb3ItaW50ZXJwb2xhdGUvaW5kZXguanMiLCJtYXBwaW5ncyI6IkFBQVk7QUFDWjtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQSxjQUFjLG1CQUFPLENBQUMsOERBQWE7QUFDbkMsWUFBWSxtQkFBTyxDQUFDLGdFQUFpQjtBQUNyQyxhQUFhLG1CQUFPLENBQUMsZ0RBQU07QUFDM0IsY0FBYyxtQkFBTyxDQUFDLGtEQUFPO0FBQzdCO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBLEVBQUU7QUFDRjtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0EsR0FBRztBQUNIO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBIiwic291cmNlcyI6WyIvVXNlcnMvZXBocmFpbXZjL0RvY3VtZW50cy9Ta29sYS9DaGFzIEFjYWRlbXkvU2tvbCBwcm9qZWt0ZXIvam9iX2NoYXNlci9ub2RlX21vZHVsZXMvY29sb3ItaW50ZXJwb2xhdGUvaW5kZXguanMiXSwic291cmNlc0NvbnRlbnQiOlsiJ3VzZSBzdHJpY3QnXHJcblxyXG4vKipcclxuICogQG1vZHVsZSAgY29sb3ItaW50ZXJwb2xhdGVcclxuICogUGljayBjb2xvciBmcm9tIHBhbGV0dGUgYnkgaW5kZXhcclxuICovXHJcblxyXG5jb25zdCBwYXJzZSA9IHJlcXVpcmUoJ2NvbG9yLXBhcnNlJyk7XHJcbmNvbnN0IGhzbCA9IHJlcXVpcmUoJ2NvbG9yLXNwYWNlL2hzbCcpO1xyXG5jb25zdCBsZXJwID0gcmVxdWlyZSgnbGVycCcpO1xyXG5jb25zdCBjbGFtcCA9IHJlcXVpcmUoJ2NsYW1wJyk7XHJcblxyXG5tb2R1bGUuZXhwb3J0cyA9IGludGVycG9sYXRlO1xyXG5cclxuZnVuY3Rpb24gaW50ZXJwb2xhdGUgKHBhbGV0dGUpIHtcclxuXHRwYWxldHRlID0gcGFsZXR0ZS5tYXAoZnVuY3Rpb24oYykge1xyXG5cdFx0YyA9IHBhcnNlKGMpO1xyXG5cdFx0aWYgKGMuc3BhY2UgIT0gJ3JnYicpIHtcclxuXHRcdFx0aWYgKGMuc3BhY2UgIT0gJ2hzbCcpIHRocm93ICdjLnNwYWNlJyArICdzcGFjZSBpcyBub3Qgc3VwcG9ydGVkLic7XHJcblx0XHRcdGMudmFsdWVzID0gaHNsLnJnYihjLnZhbHVlcyk7XHJcblx0XHR9XHJcblx0XHRjLnZhbHVlcy5wdXNoKGMuYWxwaGEpO1xyXG5cdFx0cmV0dXJuIGMudmFsdWVzO1xyXG5cdH0pO1xyXG5cclxuXHRyZXR1cm4gZnVuY3Rpb24odCwgbWl4KSB7XHJcblx0XHRtaXggPSBtaXggfHwgbGVycDtcclxuXHRcdHQgPSBjbGFtcCh0LCAwLCAxKTtcclxuXHJcblx0XHR2YXIgaWR4ID0gKCBwYWxldHRlLmxlbmd0aCAtIDEgKSAqIHQsXHJcblx0XHRcdGxJZHggPSBNYXRoLmZsb29yKCBpZHggKSxcclxuXHRcdFx0cklkeCA9IE1hdGguY2VpbCggaWR4ICk7XHJcblxyXG5cdFx0dCA9IGlkeCAtIGxJZHg7XHJcblxyXG5cdFx0dmFyIGxDb2xvciA9IHBhbGV0dGVbbElkeF0sIHJDb2xvciA9IHBhbGV0dGVbcklkeF07XHJcblxyXG5cdFx0dmFyIHJlc3VsdCA9IGxDb2xvci5tYXAoZnVuY3Rpb24odiwgaSkge1xyXG5cdFx0XHR2ID0gbWl4KHYsIHJDb2xvcltpXSwgdCk7XHJcblx0XHRcdGlmIChpIDwgMykgdiA9IE1hdGgucm91bmQodik7XHJcblx0XHRcdHJldHVybiB2O1xyXG5cdFx0fSk7XHJcblxyXG5cdFx0aWYgKHJlc3VsdFszXSA9PT0gMSkge1xyXG5cdFx0XHRyZXR1cm4gJ3JnYignK3Jlc3VsdC5zbGljZSgwLDMpKycpJztcclxuXHRcdH1cclxuXHRcdHJldHVybiAncmdiYSgnK3Jlc3VsdCsnKSc7XHJcblx0fTtcclxufVxyXG4iXSwibmFtZXMiOltdLCJpZ25vcmVMaXN0IjpbMF0sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///(ssr)/./node_modules/color-interpolate/index.js\n");
+
+/***/ })
+
+};
+;

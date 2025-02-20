@@ -1,19 +1,16 @@
 "use client";    
 import React, { useState, FC } from 'react'
-
-interface ButtonProps { 
-    children: React.ReactNode
-    clickedText?:string
-    defaultColor?: string
-    clickedColor?: string
-}
+import { ButtonProps } from '../types/tsTypes';
 
 
-const Buttons: FC<ButtonProps> = ({children, clickedText, defaultColor, clickedColor})=> {
+const Buttons: FC<ButtonProps> = ({children, clickedText, defaultColor, clickedColor, optionalFunc })=> {
     
     const [clicked, setClicked] = useState(false)
     const btnState = clicked ? clickedColor : defaultColor
     const handleClick = () => { 
+        if(optionalFunc) {
+            optionalFunc()
+        }
        setClicked(prev => !prev)
     }
     return (

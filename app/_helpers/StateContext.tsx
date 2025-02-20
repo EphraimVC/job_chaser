@@ -1,30 +1,22 @@
 "use client";
 
-import React, { useState, useContext, createContext, FC } from "react";
+import React, { useState, createContext, FC } from "react";
+import { InputProps, InputContextType } from "../types/tsTypes";
+// ------------------------------------------------------------------------------------ 
 
-interface InputProps { 
-    children: React.ReactNode
-}
-
-interface InputContextType {
-    inputValue: string;
-    setInputValue: React.Dispatch<React.SetStateAction<string>>;
-  }
-  
-
-const inputContext = createContext<InputContextType | null>(null)
+export const InputContext = createContext<InputContextType | null>(null);
 
 export const StateContext:FC<InputProps> = ({ children })=> { 
 
     const [inputValue, setInputValue] = useState(" ");
 
+    console.log("inputvalue:"+ inputValue)
     return (
-        <inputContext.Provider value={{ inputValue, setInputValue }}>
+        <InputContext.Provider value={{ inputValue, setInputValue }}>
             {children}
-        </inputContext.Provider>
+        </InputContext.Provider>
     )
 }
 
-export function UseInputValue() { 
-    return useContext(inputContext)
-}
+
+ 
