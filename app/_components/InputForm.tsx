@@ -17,9 +17,9 @@ export default function InputForm() {
             setInputValue(input)
       }
             return (
-                  <form className="mt-10" onSubmit={passInput} >
-                        <input className="rounded-lg h-9 w-60 text-blue-800 pl-2" placeholder="Job search" onChange={handleInput} />
-                        <button className=" border-white border-2 rounded-md p-1 ml-5" type="submit" >Search</button>
+                  <form className=" flex mt-10 " onSubmit={passInput} >
+                        <input className="rounded-lg h-9 w-60 dark:bg-slate-600 dark:text-white  text-blue-800 pl-2" placeholder="Job search" onChange={handleInput} />
+                        <button className=" rounded-md p-1 ml-5 text-black bg-[#EAFF56] text-base h-9 -tracking-tighter font-semibold w-20" type="submit" >Search</button>
                   </form>
             )
       }

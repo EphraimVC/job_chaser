@@ -1,7 +1,8 @@
-import React from 'react'
+import { PropagateLoader } from "react-spinners"
 
-export default function loading() {
+function Loading() {
   return (
-    <div>loading</div>
+<PropagateLoader color="#c916b7" />
   )
 }
+export default Loading
