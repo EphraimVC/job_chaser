@@ -4,6 +4,9 @@ import "./globals.css";
 import Header from "./_components/Header";
 import { ThemeToggle } from "./_helpers/ThemeToggle";
 
+
+
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -31,8 +34,9 @@ export default function RootLayout({
       >
         <ThemeToggle>
         <Header/>
+
         {children}
-        </ThemeToggle>
+        </ThemeToggle> 
       
       </body>
     </html>

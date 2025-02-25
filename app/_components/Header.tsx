@@ -1,8 +1,13 @@
 "use client";
-
+import { useContext } from 'react';
 import { ToggleSlider } from 'react-toggle-slider'
+import { ThemeContext } from '../_helpers/ThemeToggle';
 
-export default function Header() {
+
+function Header() {
+  const { theme, setTheme } = useContext(ThemeContext)
+  
+console.log(theme)
   return (
     <div className='fixed w-full p-2 mb-10 flex justify-end'>
       <ToggleSlider
@@ -12,10 +17,11 @@ export default function Header() {
         barBackgroundColorActive="#2514FF"
         handleBackgroundColorActive='#FFEE2C'
         barBackgroundColor='#FFEE2C'
-        active={ false}
-       
-        
+        onToggle={(prev) => setTheme(!prev)}
+        flip={true}
       />
     </div>
   )
 }
+
+export default Header;
