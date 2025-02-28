@@ -1,21 +1,24 @@
 "use client";
 import { useContext, useState } from "react"
-import { InputContext } from "../_helpers/StateContext"
-
+// import { InputContext } from "../_helpers/StateContext"
+import { useDispatch } from "react-redux";
+import { setFilterInput} from "../InputSlice"
 
 export default function InputForm() {
       const [input, setInput] = useState("")
-      const { setInputValue } = useContext(InputContext);
+      // const { setInputValue } = useContext(InputContext);
+      const dispatch = useDispatch();
 
       const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
             e.preventDefault()
             setInput(e.target.value)
-           
       }
 
       const passInput = (e: React.FormEvent<HTMLFormElement>) => {
             e.preventDefault()
-            setInputValue(input.toLowerCase())
+         
+            dispatch(setFilterInput(input.toLowerCase()))
+            setInput("")
             console.log("submitted")
       }
             return (
@@ -25,12 +28,13 @@ export default function InputForm() {
                         <button className=" rounded-md p-1 ml-5 text-black bg-[#EAFF56] text-base h-9 -tracking-tighter font-semibold w-20" type="submit" >Search</button>
                         </div>
                         
-                        <div className="flex  gap-2 flex-wrap mt-4">
+                        {/* <div className="flex  gap-2 flex-wrap mt-4">
                         <span className="inline-flex items-center cursor-pointer rounded-md bg-yellow-50 px-2 py-1 text-xs font-medium text-yellow-800 ring-1 ring-yellow-600/20 ring-inset">Javascript</span>
                         <span className="inline-flex items-center cursor-pointer rounded-md bg-yellow-50 px-2 py-1 text-xs font-medium text-yellow-800 ring-1 ring-yellow-600/20 ring-inset">Node</span>
                         <span className="inline-flex items-center cursor-pointer rounded-md bg-yellow-50 px-2 py-1 text-xs font-medium text-yellow-800 ring-1 ring-yellow-600/20 ring-inset">Python</span>
                         <span className="inline-flex items-center cursor-pointer rounded-md bg-yellow-50 px-2 py-1 text-xs font-medium text-yellow-800 ring-1 ring-yellow-600/20 ring-inset">C++</span>
-                        </div>
+                        </div> */}
                   </form>
             )
       }
+
